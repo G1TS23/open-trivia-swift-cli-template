@@ -47,10 +47,21 @@ final class TriviaAPIRepository: TriviaRepository {
                 .replacingOccurrences(of: "&quot;", with: "\"")
                 .replacingOccurrences(of: "&#039;", with: "'")
                 .replacingOccurrences(of: "&euml;", with: "ë")
+                .replacingOccurrences(of: "&Euml;", with: "Ë")
                 .replacingOccurrences(of: "&eacute;", with: "é")
+                .replacingOccurrences(of: "&Eacute;", with: "É")
+                .replacingOccurrences(of: "&egrave;", with: "è")
+                .replacingOccurrences(of: "&Egrave;", with: "È")
+                .replacingOccurrences(of: "&ecirc;", with: "ê")
+                .replacingOccurrences(of: "&Ecirc;", with: "Ê")
+                .replacingOccurrences(of: "&agrave;", with: "à")
+                .replacingOccurrences(of: "&Agrave;", with: "À")
+                .replacingOccurrences(of: "&acirc;", with: "â")
+                .replacingOccurrences(of: "&Acirc;", with: "Â")
                 .replacingOccurrences(of: "&amp;", with: "&")
                 .replacingOccurrences(of: "&ouml;", with: "ö")
-                .replacingOccurrences(of: "&oslash;", with: "ø") {
+                .replacingOccurrences(of: "&oslash;", with: "ø")
+                .replacingOccurrences(of: "&oacute;", with: "ó") {
                 return(decodedString)
             print(decodedString)
         } else {

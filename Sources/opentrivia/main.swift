@@ -27,18 +27,23 @@ if #available(macOS 13, *){
     print("?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿")
     print("?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿")
     print("\u{001B}[0m")
+
     repeat{
         print("How many questions do you want to answer ?")
         var howMany = ""
+
         repeat {
             print("(from 1 to 10)")
             howMany = readLine(strippingNewline: true)!
         } while !nbQuestions.contains(howMany)
+
         let questions = try await triviaApiRepository.getQuestions(howMany: Int(howMany)!)
 
         for i in 0..<questions.count{
             let randAnswer: [Answer] = triviaApiRepository.getRandomAnswers(question: questions[i])
+
             let formatedCategory = triviaApiRepository.formatString(from: questions[i].category)
+
             var coloredDifficulty = ""
             switch questions[i].difficulty {
                 case "easy":
@@ -58,10 +63,12 @@ if #available(macOS 13, *){
 
             let formatedQuestion = triviaApiRepository.formatString(from: questions[i].question)
             print(formatedQuestion)
+
             for j in 0..<randAnswer.count{
                 let formatedAnswer = triviaApiRepository.formatString(from: randAnswer[j].answer)
                 print("   \(j+1). \(formatedAnswer)")
             }
+
             var input = ""
             print("Type your answer and press enter")
             switch randAnswer.count{
@@ -124,6 +131,8 @@ if #available(macOS 13, *){
             print("?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿?¿")
             print("\u{001B}[0m")
         }
+
+        score = 0
         } while !quitGame
     print("💚💚 Thank you for playing 💚💚")
     print("💚💚 Olivier Falahi  ©2024 💚💚")
